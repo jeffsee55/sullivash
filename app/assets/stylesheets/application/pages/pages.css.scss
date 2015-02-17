@@ -1,0 +1,23 @@
+body {
+  @include background(linear-gradient($light-gray, $light-gray) top no-repeat);
+  @include background(linear-gradient($purple, $purple) bottom no-repeat );
+  background-size: 100% 50%;
+}
+
+.container {
+  @include outer-container;
+  margin-bottom: 100px;
+}
+
+.main {
+  @include media($large-screen) {
+    @include span-columns(8);
+  }
+}
+
+.sidebar {
+  @include media($large-screen) {
+    @include span-columns(4);
+    @include omega();
+  }
+}

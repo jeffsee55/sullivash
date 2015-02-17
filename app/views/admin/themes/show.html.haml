@@ -1,0 +1,73 @@
+=render "admin/nav"
+=simple_form_for [:admin, @theme] do |f|
+  .body
+    =f.input :logo, label: false
+    %table
+      %tr
+        %td Site Tagline
+        %td= f.input :tagline, label: false, placeholder: "Tagline (ex. Save. Play. Organize)"
+      %tr
+        %td Link
+        %td URL
+      %tr
+        %td Facebook
+        %td= f.input :facebook, label: false, placeholder: "Facebook"
+      %tr
+        %td Instagram
+        %td= f.input :instagram, label: false, placeholder: "Instagram"
+      %tr
+        %td Pinterest
+        %td= f.input :pinterest, label: false, placeholder: "Pinterest"
+      %tr
+        %td Google Plus
+        %td= f.input :google_plus, label: false, placeholder: "Google_plus"
+      %tr
+        %td RSS Feed
+        %td= f.input :rss, label: false, placeholder: "RSS"
+    .index
+      .card
+        -if @theme.background_image
+          .image{style: "background: url('#{attachment_url(@theme, :background_image, :fill, 200, 200)}') no-repeat center; background-size: cover"}
+        -else
+          .image{style: "background: #{@theme.background_image}"}
+        .content
+          .title
+            %strong Background Image
+            = f.attachment_field :background_image, direct: true
+      .card
+        .image.item{style: "background: #{@theme.header_bg}"}
+        .content
+          .title
+            %strong Header Background
+            =f.input :header_bg, label: false
+      .card
+        .image.item{style: "background: #{@theme.footer_bg}"}
+        .content
+          .title
+            %strong Footer Background
+            =f.input :footer_bg, label: false
+      .card
+        .image
+          .btn.item{style: "background: #{@theme.button_bg}"} TEST BUTTON
+        .content
+          .title
+            %strong Button Background
+            =f.input :button_bg, label: false
+      .card
+        .image
+          .icon.item.fa.fa-facebook-square.fa-4x{style: "color: #{@theme.icon_color}"}
+        .content
+          .title
+            %strong Icon Background
+            =f.input :icon_color, label: false
+      .card#gradient
+        :sass
+          #gradient .item
+            background: linear-gradient(transparentize(#{@theme.primary_gradient}, 0.60), transparentize(#{@theme.secondary_gradient}, 0.60))
+        .image.item
+        .content
+          .title
+            %strong Poster Gradient
+            =f.input :primary_gradient, label: false
+            =f.input :secondary_gradient, label: false
+    =f.submit "Save", class: "button "

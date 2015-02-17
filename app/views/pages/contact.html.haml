@@ -1,0 +1,33 @@
+.container
+  = render "nav"
+  .welcome-post
+    =render partial: "contact_poster"
+  .card.blog
+    .contact-item#recent-projects
+      =image_tag attachment_url(@recent_projects, :image, :fill, 200, 200), class: "welcome-picture"
+      %h3.thin RECENT
+      %h3.fat PROJECTS
+      .body
+        =@recent_projects.body.html_safe
+        =link_to "RECENT PROJECTS", category_path(Category.find_by_name("Recent Projects")), class: "btn btn-outline btn-full", style: "text-align: center;", method: :get
+    .contact-item#about-me
+      =image_tag attachment_url(@about_me, :image, :fill, 200, 200), class: "welcome-picture"
+      %h3.thin ABOUT
+      %h3.fat ME
+      .body
+        =@about_me.bio.html_safe
+        =link_to "VIEW", about_path, class: "btn btn-outline btn-full", style: "text-align: center;", method: :get
+    .contact-item#work-with-me
+      =image_tag attachment_url(@work_with_me, :image, :fill, 200, 200), class: "welcome-picture"
+      %h3.thin WORK
+      %h3.fat WITH ME
+      .body
+        =@work_with_me.body.html_safe
+        .modal
+          %label{:for => "modal-message"}
+            .btn.btn-outline.btn-full.modal-trigger{style: "text-align: center;"} WORK WITH ME
+  .index
+    %ul.index_row
+      - @posts.each do |p|
+        = render partial: "shared/tile", locals: { p: p, cat: p.categories.first }
+= render "footer"

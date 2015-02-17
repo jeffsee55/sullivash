@@ -1,0 +1,54 @@
+.poster {
+  position: relative;
+  height: $poster-height-small;
+  width: 100%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-bottom: 2em;
+  background-size: cover !important; // This is necessary because the image is added via inline styling.
+  @include media($large-screen) {
+    height: $poster-height-large;
+  }
+  &:hover .poster-icons {
+    visibility: visible;
+  }
+  .overlay {
+    position: absolute;
+    z-index: 10;
+    @include background(linear-gradient(transparentize($theme-overlay-primary, 0.3), transparentize($theme-overlay-secondary, 0.3)));
+    height: 100%;
+    width: 100%;
+  }
+  .poster-icons {
+    visibility: hidden;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+  }
+  .content {
+    position: absolute;
+    z-index: 20;
+    bottom: 0;
+    color: white;
+    padding: 2em;
+    & > .text {
+      position: relative;
+      margin-top: 0.5em;
+      font-size: 1em;
+      @include media($large-screen) {
+        font-size: 2em
+      }
+    }
+    .buttons {
+      .button-primary, .button-secondary {
+        float: right;
+        margin-right: 10px;
+      }
+      .button-primary input {
+        background: $primary;
+      }
+      .button-secondary input {
+        background: $secondary;
+      }
+    }
+  }
+}

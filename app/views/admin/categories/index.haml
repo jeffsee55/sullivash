@@ -1,0 +1,21 @@
+=render "admin/nav"
+.body
+  .index
+    - @categories.each do |c|
+      .card{style: "background: #{c.tag_color}"}
+        =link_to edit_admin_category_path(c), style: "color: white;" do
+          -if c.image
+            .image{style: "background: url('#{attachment_url(c.posts.last, :image, :fill, 200, 200)}') no-repeat center; background-size: cover"}
+          -else
+            .image
+          .content
+            .title
+              %strong=c.nice_name
+            = "#{c.posts.count} posts"
+        %ul.action
+          %li
+            =link_to category_path(c) do
+              %i.fa.fa-location-arrow
+          %li
+            =link_to edit_admin_category_path(c) do
+              %i.fa.fa-pencil

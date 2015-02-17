@@ -1,0 +1,5 @@
+= render "admin/nav"
+%h3= @message.name
+%h4= @message.email
+%p= @message.body
+=button_to "Delete", admin_message_path(@message), class: "item button", method: :delete

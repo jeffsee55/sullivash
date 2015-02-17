@@ -1,0 +1,15 @@
+= render "admin/nav"
+%table.tables
+  %thead
+    %tr
+      %th EMAIL
+      %th MESSAGE
+      %th ACTION
+  %tbody
+    - @messages.each do |m|
+      %tr
+        %td= "#{m.email}: #{m.name}"
+        %td= "#{m.body}"
+        %td
+          =button_to "View", admin_message_path(m), class: "item button", method: :get
+          =button_to "Delete", admin_message_path(m), class: "item button btn-warning", method: :delete

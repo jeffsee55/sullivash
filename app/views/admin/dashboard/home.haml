@@ -1,0 +1,50 @@
+=render "admin/nav"
+%h3 Drafts
+%br
+-if @unpublished_posts.empty?
+  You have no drafts.
+  =button_to "New Draft", new_admin_post_path, method: :get, class: "button"
+-else
+  =render partial: "admin/posts/index", locals: { posts: @unpublished_posts }
+%hr.thick
+%h3 Google Analytics
+/ Step 1: Create the containing elements.
+.google-list
+  %section#auth-button
+  %section#view-selector
+.google-table
+  %section#timeline
+/ Step 2: Load the library.
+:javascript
+  (function(w,d,s,g,js,fjs){
+    g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+    js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+    js.src='https://apis.google.com/js/platform.js';
+    fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+  }(window,document,'script'));
+:coffee
+  gapi.analytics.ready ->
+    # Step 3: Authorize the user.
+    CLIENT_ID = '274615635927-51pn1kumssn8lh4jhg0c4t5skt9gp1vc.apps.googleusercontent.com'
+    gapi.analytics.auth.authorize
+      container: 'auth-button'
+      clientid: CLIENT_ID
+    # Step 4: Create the view selector.
+    viewSelector = new (gapi.analytics.ViewSelector)(container: 'view-selector')
+    # Step 5: Create the timeline chart.
+    timeline = new (gapi.analytics.googleCharts.DataChart)(
+      reportType: 'ga'
+      query:
+        'dimensions': 'ga:date'
+        'metrics': 'ga:sessions'
+        'start-date': '30daysAgo'
+        'end-date': 'yesterday'
+      chart:
+        type: 'LINE'
+        container: 'timeline')
+    # Step 6: Hook up the components to work together.
+    gapi.analytics.auth.on 'success', (response) ->
+      viewSelector.execute()
+    viewSelector.on 'change', (ids) ->
+      newIds = query: ids: ids
+      timeline.set(newIds).execute()

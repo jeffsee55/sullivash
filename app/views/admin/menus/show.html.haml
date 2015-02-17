@@ -1,0 +1,8 @@
+%ul.accordion-tabs
+  %li.tab-header-and-content
+    %a.is-active.tab-link#item-1{:href => "javascript:void(0)"} Menu Item 1
+    .tab-content
+      =render partial: "admin/menu_items/menu_item", locals: { menu_item: @menu_item }
+      %h3 Sub Items
+      #item-1-sub-item
+      =link_to "Add Sub Menu Item", new_admin_menu_item_path, class: "btn", remote: true

@@ -1,0 +1,5 @@
+=render "admin/nav"
+=render partial: "index", locals: { posts: @posts }
+%hr.thick
+.pagination
+  -# = paginate @posts

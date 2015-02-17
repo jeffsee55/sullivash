@@ -1,0 +1,109 @@
+.admin-posts-edit, .admin-posts-new {
+  position: fixed;
+  width: 100%;
+}
+.post {
+  @include clearfix();
+  height: 754px;
+  #post_body {
+    width: 100%;
+  }
+  .body {
+    @include span-columns(6);
+    @include shift(1);
+    padding-top: 1em;
+    .froala-wrapper {
+      box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.4);
+      margin-top: 1em;
+      padding: 2em 2em 0 2em;
+    }
+    .fr-placeholder {
+      top: 0 !important;
+      margin: 2em !important;
+    }
+    .froala-element.f-basic {
+      padding: 0;
+    }
+    .f-basic {
+      border: none;
+    }
+  }
+  .toolbar {
+    $toolbar-bg: lighten($light-gray, 5);
+    @include span-columns(4);
+    @include shift(1);
+    @include omega;
+    padding: 2em;
+    background: $toolbar-bg;
+    .post_title {
+      font-size: 2.5em;
+      margin-left: 0px;
+      input {
+        background: $toolbar-bg;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 10px;
+      }
+    }
+    height: 100%;
+    #post_image {
+      padding: 10px;
+    }
+    .categories {
+      @include row();
+      li {
+        @include span-columns(6);
+        &:nth-child(2n) {
+          @include omega();
+        }
+      }
+    }
+    .submit-actions {
+      @include row();
+    }
+  }
+}
+
+// Show page
+
+.show {
+  @include span-columns(7);
+  @include shift(2);
+  box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.4);
+  padding: 2em;
+}
+
+// Index page
+
+.pagination {
+  $pagination-border-color: $base-border-color;
+  $pagination-border: 1px solid $pagination-border-color;
+  $pagination-background: lighten($pagination-border-color, 10);
+  $pagination-hover-background: lighten($pagination-background, 5);
+  $pagination-color: $base-font-color;
+
+  text-align: center;
+  margin: 1em;
+  span {
+    @include transition (all 0.2s ease-in-out);
+    background: $pagination-background;
+    border-radius: $base-border-radius;
+    border: $pagination-border;
+    color: $pagination-color;
+    outline: none;
+    padding: ($base-spacing / 4) ($gutter / 2);
+    display: inline;
+    list-style: none;
+    margin: 0 5px;
+    &:hover,
+    &:focus {
+      background: $pagination-hover-background;
+      color: $base-link-color;
+    }
+
+    &:active {
+      background: $pagination-background;
+    }
+  }
+}

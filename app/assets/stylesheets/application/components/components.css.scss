@@ -1,0 +1,214 @@
+@import "footer";
+@import "header";
+@import "index";
+@import "navigation";
+@import "posts";
+@import "poster";
+@import "sidebar";
+@import "social_card";
+@import "tile";
+@import "modal";
+@import "page_header";
+@import "contact";
+
+
+body {
+  @include background(url($theme-background-image))
+}
+
+.spacer {
+  height: 2em;
+  width: 100%;
+}
+
+input {
+  line-height: 2em;
+}
+
+#flash {
+  background: $brick;
+  & > div {
+    padding: 10px 0;
+    color: white;
+    @include outer-container;
+  }
+}
+
+hr {
+  margin: 1em 0;
+}
+
+.container {
+  @include media($large-screen) {
+  }
+}
+
+.card {
+  padding: 2em;
+  margin-bottom: 2em;
+  box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.4);
+}
+.card-full {
+  box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.4);
+  margin-bottom: 2em;
+}
+
+input[type="button"] {
+  border-radius: 0;
+  padding: 1em;
+  font-weight: 300;
+  border: 1px solid;
+  background: none;
+  &:hover {
+    background: darken(#fff, 20);
+  }
+}
+
+button,
+input[type="submit"] {
+  color: white;
+  background: $theme-accent-color;
+  border: none;
+  padding: 1em 1.5em;
+  line-height: 1.5 !important;
+  display: inline-block;
+}
+
+.btn {
+  color: white;
+  background: $theme-accent-color;
+  padding: 1em 1.5em;
+  line-height: 1.5 !important;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.btn-full {
+  width: 100% !important;
+}
+
+.btn-outline {
+  background: none;
+  border: 1px solid;
+  line-height: 1.5;
+  &:hover {
+    color: darken($base-accent-color, 20);
+  }
+}
+
+.icon-list {
+  @include clearfix();
+  text-align: center;
+  a {
+    color: $theme-accent-color;
+    &:hover {
+      color: $theme-hover-accent-color;
+    }
+  }
+  .facebook {
+    color: $facebook;
+    &:hover {
+      color: darken($facebook, 15);
+    }
+  }
+  .pinterest {
+    color: $pinterest;
+    &:hover {
+      color: darken($pinterest, 15);
+    }
+  }
+}
+
+.comment {
+  @include clearfix();
+  background: $card-color;
+  .comment-header {
+    @include row();
+    h2 {
+      float: left;
+    }
+  }
+  .comment-button {
+    float: right;
+  }
+  .comment {
+    @include row();
+    padding: 1em;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: transparentize($dark-gray, 0.2);
+}
+
+.overlay-light {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: transparentize(white, 0.2);
+}
+
+.overlay-light-font {
+  color: $dark-gray;
+}
+
+.dark-hr {
+  border-bottom: 1px solid $dark-gray;
+}
+.thick-hr {
+  border-bottom: 4px solid #ddd;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.fat {
+  font-weight: 700;
+}
+
+.tag {
+  color: white;
+  padding: 0.75em 2em;
+  display: inline;
+  position: relative;
+  white-space: nowrap;
+  z-index: 50;
+  left: -20px;
+  top: 20px;
+  &:hover {
+    color: darken(white, 15);
+  }
+}
+
+.poster-tag {
+  left: 0;
+  top: 0;
+  font-size: 0.8em;
+  @include media($large-screen) {
+    font-size: 1em;
+  }
+}
+
+.tag-diy {
+  background: $yellow;
+}
+.tag-organizing {
+  background: $blue;
+}
+.tag-weddings {
+  background: $aqua;
+}
+
+.tag-closets {
+  background: $aqua;
+}
+
+.tag-kitchen {
+  background: $blue;
+}
+
+.tag-holidays {
+  background: $yellow;
+}

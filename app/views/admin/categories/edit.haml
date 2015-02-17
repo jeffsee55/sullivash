@@ -1,0 +1,4 @@
+=render "admin/nav"
+=render "form"
+-if @category.id
+  =render partial: "admin/posts/index", locals: { posts: @category.posts }

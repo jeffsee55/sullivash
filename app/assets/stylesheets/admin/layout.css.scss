@@ -1,0 +1,20 @@
+.sidebar {
+}
+
+.main {
+  @include outer-container;
+  position: relative;
+}
+
+.footer {
+}
+
+.google-list {
+  @include span-columns(4);
+}
+
+.google-table {
+  @include span-columns(6);
+  @include shift(1);
+  @include omega();
+}

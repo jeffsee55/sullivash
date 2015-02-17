@@ -1,0 +1,68 @@
+.card {
+  @include media($large-screen) {
+    @include span-columns(3);
+    &:nth-child(4n) {
+      @include omega();
+    }
+    &:nth-child(4n+1) {
+      clear: left;
+    }
+  }
+  background: lighten($light-gray, 10);
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  &:hover {
+    background: $light-gray;
+  }
+  .image {
+    height: 200px;
+    background: $light-gray;
+  }
+  .btn {
+    @include position(absolute, 25% 10% null 10%);
+    text-align: center;
+  }
+  .icon {
+    @include position(absolute, 45% null null 50%);
+    margin: -50px 0 0 -30px;
+  }
+  .content {
+    margin: 10px;
+  }
+  .unpublished {
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    color: $brick;
+  }
+  .action {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    li {
+      padding: 5px 10px;
+      background: $light-gray;
+      &:hover {
+        background: darken($light-gray, 15);
+        a {
+          color: white;
+        }
+      }
+    }
+    a {
+      color: $medium-gray;
+    }
+  }
+}
+
+.post_info {
+  @include span-columns(9);
+  h3, h5 {
+    margin-bottom: 0.5em;
+  }
+  .button {
+    margin-right: 0.5em;
+  }
+}

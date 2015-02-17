@@ -1,0 +1,4 @@
+=render "admin/nav"
+%h3= @category.nice_name
+%br
+=render partial: "admin/posts/index", locals: { posts: @category.posts }

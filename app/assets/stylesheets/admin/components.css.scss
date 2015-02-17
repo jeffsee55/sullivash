@@ -1,0 +1,99 @@
+.clearfix {
+  @include clearfix();
+}
+
+#flash {
+  background: $brick;
+  & > div {
+    padding: 10px 0;
+    color: white;
+    @include outer-container;
+  }
+}
+
+#image {
+  height: 200px;
+  width: 100%;
+  background: $light-gray;
+  overflow: hidden;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  i {
+    position: absolute;
+    top: 45%;
+    left: 43%;
+    color: $aqua;
+  }
+}
+
+hr {
+  margin: 1em 0;
+}
+
+hr.thick {
+  border-bottom: 5px solid #dddddd;
+}
+
+.avatar {
+  @include transition(all 0.4s ease);
+  vertical-align: middle;
+  border: 5px solid transparent;
+  &:hover {
+    border: 5px solid $brick;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.button, button {
+  background: $base-accent-color;
+  border: none;
+  color: white;
+  border-radius: 2px;
+}
+
+.btn {
+  color: white;
+  background: $theme-accent-color;
+  padding: 1em 1.5em;
+  line-height: 1.5 !important;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.btn-inline {
+  display: inline-block;
+  float: left;
+}
+
+.primary {
+  color: $blue;
+  &:hover {
+    color: darken($blue, 15);
+  }
+}
+
+.warning {
+  color: $brick;
+  &:hover {
+    color: darken($brick, 15);
+  }
+}
+
+.btn-primary {
+  background: $blue;
+  &:hover {
+    background: darken($blue, 15);
+  }
+}
+
+.btn-warning {
+  background: $brick;
+  &:hover {
+    background: darken($brick, 15);
+  }
+}

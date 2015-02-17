@@ -1,0 +1,101 @@
+$ ->
+  #= require froala_editor.min.js
+  #= require froala/font_family.min.js
+  #= require froala/font_size.min.js
+  #= require froala/inline_styles.min.js
+  #= require froala/colors.min.js
+  $("#theme_logo").editable(
+    height: 300
+    inlineMode: false
+    fontList: {"Lato,Arial,Helvetica": "Normal", "American Typewriter": "Swirly", "Tahoma,Geneva", "Tahoma"}
+    colors: [
+      '#15E67F', '#E3DE8C', '#D8A076', '#D83762', '#76B6D8', 'REMOVE',
+      '#1C7A90', '#249CB8', '#4ABED9', '#FBD75B', '#FBE571', '#FFFFFF',
+      '#575454', '#D5D5D5'
+      ],
+      colorsStep: 6
+    imageButtons: ["display", "align", "linkImage", "info", "replaceImage", "removeImage"],
+    customImageButtons:
+      info:
+        title: 'Image source'
+        icon:
+          type: 'font'
+          value: 'fa fa-info'
+        callback: ($img) ->
+          alert $img.attr('src')
+          return
+        refresh: ($img) ->
+          console.log 'Refresh image button'
+          console.log $img
+          return
+    )
+
+  $(window).resize ->
+    $('#post_body').editable(
+      windowHeight = $(window).height()
+      boxHeight = windowHeight - 120
+      $(".froala-wrapper .f-basic").height boxHeight
+    )
+  windowHeight = $(window).height()
+  boxHeight = windowHeight - 120
+  $("#post_body").editable(
+    height: boxHeight
+    inlineMode: false
+    fontList: {"Lato,Arial,Helvetica": "Normal", "American Typewriter": "Swirly", "Tahoma,Geneva", "Tahoma"}
+    imageUploadURL: "<%= Rails.application.routes.url_helpers.admin_create_image_path %>"
+    imageDeleteURL: "<%= Rails.application.routes.url_helpers.admin_destroy_image_path %>"
+    defaultImageWidth: 600
+    spellcheck: true
+    colorsStep: 6
+    imageButtons: ["display", "align", "linkImage", "info", "replaceImage", "removeImage"],
+    customImageButtons:
+      info:
+        title: 'Image source'
+        icon:
+          type: 'font'
+          value: 'fa fa-info'
+        callback: ($img) ->
+          alert $img.attr('src')
+          return
+        refresh: ($img) ->
+          console.log 'Refresh image button'
+          console.log $img
+          return
+    )
+    .on "editable.imageError", (e, editor, error) ->
+      # Custom error message returned from the server.
+      if error.code is 0
+        console.log error
+      # Bad link.
+      else if error.code is 1
+        console.log error
+      # No link in upload response.
+      else if error.code is 2
+        console.log error
+      # Error during image upload.
+      else if error.code is 3
+        console.log error
+      # Parsing response failed.
+      else if error.code is 4
+        console.log error
+      # Image too large.
+      else if error.code is 5
+        console.log error
+      # Invalid image type.
+      else if error.code is 6
+        console.log error
+    .on "editable.afterRemoveImage", (e, editor, $img) ->
+      editor.options.imageDeleteParams = {src: $img.attr('src')}
+      editor.deleteImage($img)
+    .on 'editable.imageDeleteSuccess', (e, editor, data) ->
+      console.log data
+    .on 'editable.imageDeleteError', (e, editor, error) ->
+      console.log error
+
+  $("input#post_site_post").click ->
+    if $("input#post_site_post").is(":checked")
+      $(".categories li input").attr("disabled", "disabled").removeAttr("checked")
+      console.log "Check"
+    else
+      $(".categories li input").removeAttr("disabled")
+      console.log "Uncheck"

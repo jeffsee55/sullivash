@@ -1,0 +1,75 @@
+.sidebar {
+  text-align: center;
+  .welcome {
+    background: $card-color;
+    .welcome-picture {
+      height: 150px;
+      width: 150px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    .greeting {
+      padding: 1em 0;
+      text-align: center;
+      .meet, .name {
+        font-size: 2em;
+      }
+      .meet {
+        font-weight: 300;
+      }
+      .name {
+        font-weight: 700;
+      }
+      p {
+        text-align: justify;
+      }
+    }
+    .call-to-action {
+      @include row();
+      h3 {
+        font-weight: 300;
+      }
+      .email_field {
+        width: 100%;
+        padding: 0.55em;
+        margin: 0.5em 0;
+        &:nth-child(2) {
+        }
+      }
+    }
+    .category-block {
+      text-align: center;
+      background: $dark-gray;
+      li {
+        position: relative;
+        padding: 1em;
+        background-size: cover !important; // This is necessary because the image is added via inline styling.
+        &:hover {
+          background: transparentize($dark-gray, 0.3);
+        }
+        h3 {
+          position: relative;
+          z-index: 20
+        }
+      }
+    }
+  }
+
+  .related-blogs-block {
+    a {
+      color: white;
+    }
+  }
+
+  .blog-archive-block {
+    background: $card-color;
+    h3 {
+      font-weight: 300;
+    }
+    text-align: left;
+    .archive-list {
+      display:none;
+    }
+  }
+}

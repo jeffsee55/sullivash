@@ -1,0 +1,10 @@
+.header
+  %h2.page ADMIN
+  .actions
+    = search_form_for [:admin, @q], class: "search-bar item", url: search_admin_posts_path, html: { method: :post } do |f|
+      = f.search_field :title_or_body_cont
+      = f.button do
+        %i.fa.fa-search
+    .item="#{current_user.email}"
+    =button_to "Sign Out", sign_out_path, class: "item button btn-warning", method: :delete
+%hr.thick

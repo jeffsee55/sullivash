@@ -1,0 +1,37 @@
+.search {
+  display: none;
+}
+
+.page_header {
+  @include clearfix;
+  padding: 1.2em;
+  // Overridden inline with categories
+  background: $primary;
+  color: white;
+  margin-bottom: 1.5em;
+  @include media($large-screen) {
+    padding: 2em;
+  }
+  h2 {
+    font-size: 1.8em;
+    padding-bottom: 0.2em;
+    @include media($large-screen) {
+      font-size: 2em;
+      padding-bottom: 0;
+    }
+  }
+  .left {
+    @include media($large-screen) {
+      @include span-columns(9);
+    }
+  }
+  .right {
+    text-align: right;
+    font-size: 1.2em;
+    @include media($large-screen) {
+      @include span-columns(3);
+    }
+    a {
+    }
+  }
+}

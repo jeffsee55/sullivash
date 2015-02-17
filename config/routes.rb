@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         patch 'publish' => 'posts#update'
       end
     end
+    resources :mini_posts, except: :show
     resources :users
     resources :categories
     resources :images

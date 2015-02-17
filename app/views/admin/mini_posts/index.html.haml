@@ -1,0 +1,21 @@
+=render "admin/nav"
+.body
+  %p In this section you can define the text you see on the home and about pages.
+  %h3 Home
+  .index
+    -@home_mini_posts.each do |m|
+      .card
+        =link_to edit_admin_mini_post_path(m), style: "color: white;" do
+          .content
+            .title{style: "color: #5c5c5c"}
+              %strong=m.title
+              %p=m.body
+  %h3 About
+  .index
+    -@about_mini_posts.each do |m|
+      .card
+        =link_to edit_admin_mini_post_path(m), style: "color: white;" do
+          .content
+            .title{style: "color: #5c5c5c"}
+              %strong=m.title
+              %p=m.body

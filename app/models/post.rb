@@ -16,7 +16,6 @@ class Post < ActiveRecord::Base
   scope :site_post, -> { where(site_post: true) }
   scope :regular_post, -> { where(site_post: false) }
   scope :published, -> { where.not(published_at: nil).where(site_post: false).order('published_at DESC') }
-  scope :published_non_projects, -> { joins(:categories).where.not("categories.name" => "Recent Projects") }
 
   accepts_nested_attributes_for :post_categories
 

@@ -1,1 +1,5 @@
 posts#index
+= "#{@posts.count} posts"
+-@posts.each do |p|
+  =p.title
+  %br

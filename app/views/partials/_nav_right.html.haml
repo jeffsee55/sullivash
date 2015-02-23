@@ -1,0 +1,21 @@
+.menu{style: "color: #{menu_color}"}
+  .btn-outline MENU
+.full-screen-menu.light.spaced
+  .exit X
+  %ul.primary
+    %li
+      =link_to "HOME", root_path
+    %li
+      =link_to "ABOUT", about_path
+    %li
+      =link_to "CONTACT", contact_path
+    %li.more
+      %a
+        PAINTINGS
+      %ul
+        %li
+          =link_to "BY DATE", posts_path(order: "by_date")
+        %li
+          =link_to "BY STYLE", categories_path(parent: "style")
+        %li
+          =link_to "BY SUBJECT", categories_path(parent: "subject")

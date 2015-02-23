@@ -1,0 +1,15 @@
+.project-index-hero {
+  height: 200px;
+  margin-bottom: $block-padding / 2;
+  position: relative;
+  .logo {
+    width: 400px;
+    path {
+      fill: white;
+    }
+  }
+}
+
+.grid-header {
+  margin: 5em 2em;
+}

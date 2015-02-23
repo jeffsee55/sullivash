@@ -1,2 +1,10 @@
-categories#show
-=@category
+= render partial: "partials/nav_left", locals: { logo_color: "white" }
+= render partial: "partials/nav_right", locals: { menu_color: "white" }
+= render partial: "partials/short_banner", locals: { post: @category.posts[5] }
+= render partial: "partials/grid_header", locals: { title: @category.name }
+.grid-items-lines.category-grid
+  -@posts.each do |post|
+    %a.grid-item{:href => "javascript:void(0)"}
+      =render partial: "partials/grid_item", locals: { post: post }
+.pagination
+  =paginate @posts

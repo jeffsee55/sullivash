@@ -5,21 +5,21 @@
   .toolbar
     = p.input :title, placeholder: "Title", label: false
     %hr
-    #image.post_image= image_tag attachment_url(@post, :image, :fill, 400, 200) if @post.image_id?
+    #image.post_image= image_tag attachment_url(@post, :image) if @post.image_id?
     = p.input :remove_image, as: :boolean
     = p.attachment_field :image, direct: true
     %hr
     %h5 Categories
-    %ul.categories
-      - @categories.each do |cat|
-        %li
-          -if @post.categories.include?(cat)
-            = check_box_tag 'category_ids[]', cat.id, input_html: { checked: true }
-          -else
-            = check_box_tag 'category_ids[]', cat.id
-          = cat.nice_name
+    -# %ul.categories
+    -#   - @categories.each do |cat|
+    -#     %li
+    -#       -if @post.categories.include?(cat)
+    -#         = check_box_tag 'category_ids[]', cat.id, input_html: { checked: true }
+    -#       -else
+    -#         = check_box_tag 'category_ids[]', cat.id
+    -#       = cat.nice_name
     %hr
     .submit-actions
-      = p.input :site_post, as: :boolean
-      = p.submit "Save as Draft", class: "button"
-      = p.submit "Publish", class: "button btn-primary"
+      = p.input :available
+      = p.submit "Save as Draft", class: "btn"
+      = p.submit "Publish", class: "btn btn-primary"

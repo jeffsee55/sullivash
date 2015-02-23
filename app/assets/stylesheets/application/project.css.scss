@@ -1,0 +1,77 @@
+.project-header {
+  @include outer-container();
+  padding-bottom: 2em;
+  .project-image {
+    @include media($medium-screen) {
+      @include span-columns(6);
+    }
+  }
+  .project-details {
+    @include media($medium-screen) {
+      @include span-columns(6);
+    }
+    text-align: right;
+    h1, p {
+      text-align: right;
+    }
+    .available {
+      color: $mint;
+    }
+    .sold {
+      color: $brick;
+    }
+  }
+}
+.project-hero {
+  @include clearfix();
+  min-height: 30em;
+  padding: 2em 0;
+  .project-text {
+    text-align: justify;
+    @include media($large-screen) {
+      @include span-columns(6);
+      @include shift(3);
+    }
+  }
+}
+.other-projects {
+  @include outer-container();
+  padding: 4em 0;
+  @include media($medium-screen) {
+    padding: 10em 0;
+  }
+  .prev-project {
+    height: $other-projects-height / 1.75;
+    width: $other-projects-height / 1.75;
+    @include media($medium-screen) {
+      height: $other-projects-height;
+      width: $other-projects-height;
+    }
+    float: left;
+  }
+  .next-project {
+    height: $other-projects-height / 1.75;
+    width: $other-projects-height / 1.75;
+    @include media($medium-screen) {
+      height: $other-projects-height;
+      width: $other-projects-height;
+    }
+    float: right;
+  }
+  .next-project, .prev-project {
+    position: relative;
+    &:hover {
+      .overlay {
+        background: transparentize($dark-gray, 0.2);
+      }
+    }
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparentize($dark-gray, 0.5);
+  }
+}

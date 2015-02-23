@@ -47,8 +47,8 @@
       }
     }
     height: 100%;
-    #post_image {
-      padding: 10px;
+    #image {
+      height: 200px;
     }
     .categories {
       @include row();

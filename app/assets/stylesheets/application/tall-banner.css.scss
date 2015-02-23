@@ -1,0 +1,32 @@
+.hero {
+  @include media($medium-screen) {
+    min-height: 500px;
+  }
+  min-height: 300px;
+  margin-bottom: $block-padding * 2;
+  position: relative;
+  .center-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 300px;
+    height: 100px;
+    margin: -50px 0 0 -150px;
+    @include media($medium-screen) {
+      width: 600px;
+      height: 160px;
+      margin: -80px 0 0 -300px;
+    }
+    @include media($large-screen) {
+      width: 800px;
+      height: 222px;
+      margin: -111px 0 0 -400px;
+    }
+    .logo {
+      path {
+        fill: white;
+      }
+    }
+  }
+}

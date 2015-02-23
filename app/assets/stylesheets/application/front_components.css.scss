@@ -1,0 +1,48 @@
+.logo {
+  position: relative;
+  z-index: 100;
+}
+
+.clear-nav {
+  @include media($medium-screen) {
+    height: 10em;
+  }
+  height: 5em;
+}
+
+.card {
+  background: white;
+  @include media($medium-screen) {
+    padding: 3em;
+  }
+  padding: 1em;
+}
+
+.navbar-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  .logo {
+    width: 100%;
+  }
+}
+
+.block {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 ($block-padding / 3) ($block-padding / 3);
+  @include media($very-large-screen) {
+    margin: 0 0 $block-padding $block-padding;
+  }
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  h1 {
+    color: white;
+  }
+}

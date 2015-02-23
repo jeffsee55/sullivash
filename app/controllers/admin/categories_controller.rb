@@ -36,9 +36,7 @@ class Admin::CategoriesController < AdminController
 
   def destroy
     @category.destroy
-    @category.posts.collect do |p|
-      p.move_to_uncategorized
-    end
+    @category.cleanup_posts
 
     redirect_to admin_categories_path, notice: "#{@category.name} was successfully deleted"
   end

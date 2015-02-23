@@ -1,0 +1,12 @@
+.modal
+  %label{:for => "modal-1"}
+    .btn-outline CONTACT
+  %input#modal-1.modal-state{:type => "checkbox"}/
+  .modal-window
+    .modal-inner
+      %label.modal-close{:for => "modal-1"}
+      %h1 CONTACT
+      -if @post
+        =render partial: "messages/form", locals: { subject: @post.title }
+      -else
+        =render partial: "messages/form"

@@ -13,9 +13,8 @@ class Post < ActiveRecord::Base
   is_impressionable :counter_cache => true
 
   default_scope -> { order('created_at DESC') }
-  scope :site_post, -> { where(site_post: true) }
-  scope :regular_post, -> { where(site_post: false) }
-  scope :published, -> { where.not(published_at: nil).where(site_post: false).order('published_at DESC') }
+  scope :published, -> { where.not(published_at: nil).order('published_at DESC') }
+  scope :unpublished, -> {where(published_at: nil) }
 
   accepts_nested_attributes_for :post_categories
 
@@ -44,6 +43,18 @@ class Post < ActiveRecord::Base
     self.save
   end
 
+  def set_featured
+    current_featured_post = Post.where(featured: true).first
+    if self.published?
+      current_featured_post.update_attributes(featured: false) if current_featured_post
+      self.featured = true
+      self.save
+      return true
+    else
+      return false
+    end
+  end
+
   def pinterest_image
   end
 
@@ -57,9 +68,12 @@ class Post < ActiveRecord::Base
 
   def move_to_uncategorized
     if self.categories.empty?
-      uncategorized = Category.find_by_name("Uncategorized")
+      uncategorized = Category.find_or_create_by(name: "Uncategorized")
       PostCategory.create(post_id: self.id, category_id: uncategorized.id)
     end
+  end
+
+  def assign_post_published_at
   end
 
   def email_sent?
@@ -95,5 +109,13 @@ class Post < ActiveRecord::Base
         self.save
       end
     end
+  end
+
+  def self.next_post(post)
+    published.where("published_at > ?", post.published_at).last
+  end
+
+  def self.prev_post(post)
+    published.where("published_at < ?", post.published_at).first
   end
 end

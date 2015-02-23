@@ -1,2 +1,25 @@
-pages#home
-=@post.title
+= render partial: "partials/tall_banner", locals: { logo_color: "white" }
+= render partial: "partials/nav_right", locals: { menu_color: "white" }
+.grid-items-lines
+  %a.grid-item.grid-item-big{:href => "javascript:void(0)"}
+    =render partial: "partials/grid_item", locals: { post: @posts[0] }
+  .grid-item.grid-item-big.square{:href => "javascript:void(0)"}
+    .grid-item.nested-grid-item-big
+      .block.rectangle
+        .center-right.no-toggle
+          %h1= @home_mini_posts[0].body
+    .grid-item.nested-grid-item
+      =render partial: "partials/grid_item", locals: { post: @posts[1] }
+    .grid-item.nested-grid-item
+      =render partial: "partials/grid_item", locals: { post: @posts[2] }
+  %a.grid-item.grid-item-big.square{:href => "javascript:void(0)"}
+    .grid-item.nested-grid-item
+      =render partial: "partials/grid_item", locals: { post: @posts[3] }
+    .grid-item.nested-grid-item
+      =render partial: "partials/grid_item", locals: { post: @posts[4] }
+    .grid-item.nested-grid-item-big
+      .block.rectangle
+        .center-right.no-toggle
+          %h1= @home_mini_posts[1].body
+  %a.grid-item.grid-item-big
+    =render partial: "partials/grid_item", locals: { post: @posts[5] }

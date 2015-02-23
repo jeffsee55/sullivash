@@ -1,0 +1,8 @@
+-if @featured_post
+  .hero{style: "background-image: url('#{attachment_url(@featured_post, :image, :fill, 1200, 500)}'); background-size: cover"}
+    .center-logo
+      = render partial: "partials/logo"
+-else
+  .hero
+    .center-logo
+      = render partial: "partials/logo"

@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   before_filter :verify_and_set_post, only: :show
 
   def show
+    @prev = Post.prev_post(@post)
+    @next = Post.next_post(@post)
+
     impressionist(@post)
     @post.impressionist_count(filter: :session_hash)
   end
@@ -9,10 +12,10 @@ class PostsController < ApplicationController
   def index
     if params[:posts]
       posts = params[:posts]
-      recent_posts_category = Category.find_by_name("Recent Projects")
       @posts = posts.published.page params[:page]
     else
-      @posts = Post.published.page params[:page]
+      @posts = Post.published
+      @posts_years = @posts.group_by { |p| p.published_at.beginning_of_year }
     end
   end
 
@@ -29,7 +32,7 @@ class PostsController < ApplicationController
   def verify_and_set_post
     @post = Post.friendly.find(params[:id])
     unless @post.published?
-      redirect_to root_path, notice: "This post is not available"
+      redirect_to root_path, notice: "Sorry, this post is not public"
     end
   end
 

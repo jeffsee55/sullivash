@@ -11,5 +11,5 @@
         %td= "#{m.email}: #{m.name}"
         %td= "#{m.body}"
         %td
-          =button_to "View", admin_message_path(m), class: "item button", method: :get
-          =button_to "Delete", admin_message_path(m), class: "item button btn-warning", method: :delete
+          =button_to "View", admin_message_path(m), class: "item btn", method: :get
+          =button_to "Delete", admin_message_path(m), class: "item btn btn-warning", method: :delete

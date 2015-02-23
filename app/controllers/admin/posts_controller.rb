@@ -1,10 +1,18 @@
 class Admin::PostsController < AdminController
   layout 'post', only: [:new, :edit]
-  before_action :set_post, only: [:edit, :update, :updatish, :show, :destroy]
+  before_action :set_post, only: [:edit, :update, :show, :destroy, :set_featured]
 
   def new
     @post = Post.new
     @categories = Category.all
+  end
+
+  def set_featured
+    if @post.set_featured
+      redirect_to :back, notice: "#{@post.title} is now the featured post."
+    else
+      redirect_to :back, notice: "#{@post.title} cannot be set as featured, is it published?"
+    end
   end
 
   def create
@@ -30,10 +38,9 @@ class Admin::PostsController < AdminController
 
   def index
     if params[:posts]
-      posts = params[:posts]
-      @posts = posts.regular_post
+      @posts = params[:posts]
     else
-      @posts = Post.regular_post.page params[:page]
+      @posts = Post.page params[:page]
     end
   end
 
@@ -43,10 +50,6 @@ class Admin::PostsController < AdminController
     else
       @posts = Post.first(3)
     end
-  end
-
-  def site_posts
-    @posts = Post.site_post.page params[:page]
   end
 
   def edit
@@ -67,7 +70,7 @@ class Admin::PostsController < AdminController
           )
         end
       end
-      redirect_to admin_post_path(@post), notice: "#{@post.title} was susccessfully updated"
+      redirect_to admin_post_path(@post), alert: "#{@post.title} was susccessfully updated"
     end
   end
 
@@ -81,6 +84,7 @@ class Admin::PostsController < AdminController
     end
   end
 
+
   private
 
   def set_post
@@ -88,7 +92,7 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :image, :remove_image, :pinterest_image, :remove_pinterest_image, :site_post, post_categories_attributes: [:post_id])
+    params.require(:post).permit(:title, :body, :user_id, :image, :remove_image, :available, post_categories_attributes: [:post_id])
   end
 
   def publishing?

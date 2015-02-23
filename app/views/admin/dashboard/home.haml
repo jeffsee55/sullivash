@@ -1,11 +1,17 @@
 =render "admin/nav"
-%h3 Drafts
-%br
--if @unpublished_posts.empty?
-  You have no drafts.
-  =button_to "New Draft", new_admin_post_path, method: :get, class: "button"
--else
-  =render partial: "admin/posts/index", locals: { posts: @unpublished_posts }
+.clearfix
+  %h3 Featured Post
+  %p Choose any published post to be featured throughout the website.
+  =render partial: "admin/posts/card", locals: { p: @featured_post }
+%hr
+.clearfix
+  %h3 Drafts
+  %br
+  -if @unpublished_posts.empty?
+    You have no drafts.
+    =button_to "New Draft", new_admin_post_path, method: :get, class: "btn"
+  -else
+    =render partial: "admin/posts/index", locals: { posts: @unpublished_posts }
 %hr.thick
 %h3 Google Analytics
 / Step 1: Create the containing elements.

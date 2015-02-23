@@ -1,9 +1,17 @@
+// Layout
+$block-height: 600px;
+$block-padding: 50px;
+$navbar-height: 120px;
+$other-projects-height: 15em;
+$menu-font-size: 3em;
+
 // Typography
 $sans-serif: 'Lato', $helvetica;
 $serif: $georgia;
 $theme-font: $sans-serif !default;
 $base-font-family: $theme-font;
 $header-font-family: $base-font-family;
+$header-font-weight: 300;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -36,17 +44,17 @@ $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
 $card-color: #FFF;
 $facebook: #6277c6;
-$pinterest: #de6f6c;
+$pinterest: #de6f6e;
 
 // Theme Colors
 $yellow: #f3f64c;
 $aqua: #09cdad;
-$blue: #0d538d;
+$blue: #799BB0;
 $purple: #ef30b6;
 $primary: $blue;
 $secondary: $purple;
-$brick: #d97056;
-$mint: #a5eed4;
+$brick: #E97E6C;
+$mint: #9BD3C2;
 
 // Site Variables
 $theme-overlay-primary: tomato !default;
@@ -70,12 +78,15 @@ $base-link-color: lighten($base-font-color, 15);
 $hover-link-color: darken($base-font-color, 15);
 $base-button-color: $theme-accent-color;
 $hover-button-color: $theme-hover-accent-color;
+$base-border-radius: 2px;
+$action-color: $medium-gray;
+
 
 // Flash Colors
-$alert-color: $light-yellow;
-$error-color: $light-red;
+$alert-color: $brick;
+$error-color: $brick;
 $notice-color: lighten($base-accent-color, 40);
-$success-color: $light-green;
+$success-color: $mint;
 
 // Border color
 $base-border-color: $light-gray;

@@ -1,5 +1,9 @@
-posts#index
-= "#{@posts.count} posts"
--@posts.each do |p|
-  =p.title
-  %br
+= render partial: "partials/nav_left", locals: { logo_color: "white" }
+= render partial: "partials/nav_right", locals: { menu_color: "white" }
+= render partial: "partials/short_banner", locals: { post: @posts[5] }
+-@posts_years.sort.reverse.each do |year, posts|
+  = render partial: "partials/grid_header", locals: { title: "#{year.year} | #{posts.count} paintings" }
+  .grid-items-lines.category-grid
+    -posts.first(4).each do |post|
+      %a.grid-item{:href => "javascript:void(0)"}
+        =render partial: "partials/grid_item", locals: { post: post }

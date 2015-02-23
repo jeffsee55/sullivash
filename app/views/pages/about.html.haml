@@ -1,0 +1,12 @@
+= render partial: "partials/nav_left", locals: { logo_color: "#5d5d5d" }
+= render partial: "partials/nav_right", locals: { menu_color: "#5d5d5d" }
+.clear-nav
+.project-header
+  .project-image
+    =attachment_image_tag @user, :image, :fill, 500, 500
+  .project-details.card
+    %h1 ABOUT
+    %p= @user.bio
+    %hr
+    =render partial: "partials/contact_button"
+.project-hero{style: "background: url('#{attachment_url @featured_post, :image, :fill, 1200, 600}') no-repeat center fixed; background-size: cover;"}

@@ -10,12 +10,12 @@
             .title{style: "color: #5c5c5c"}
               %strong=m.title
               %p=m.body
-  %h3 About
+  %h3 Contact
   .index
-    -@about_mini_posts.each do |m|
-      .card
-        =link_to edit_admin_mini_post_path(m), style: "color: white;" do
-          .content
-            .title{style: "color: #5c5c5c"}
-              %strong=m.title
-              %p=m.body
+    .card
+      =link_to edit_admin_mini_post_path(@contact_mini_post), style: "color: white;" do
+        .content
+          .title{style: "color: #5c5c5c"}
+            %strong=@contact_mini_post.title
+            %p=@contact_mini_post.body
+

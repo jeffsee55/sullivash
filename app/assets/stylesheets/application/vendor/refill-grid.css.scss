@@ -1,0 +1,155 @@
+@mixin grid-item-columns($columns) {
+  width: (100% / 12) * $columns;
+}
+
+.grid-items-lines {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-background-color: white !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $medium-screen: em(640) !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $grid-items-background: $base-background-color;
+  $grid-item-background: $base-background-color;
+  $grid-item-border: 1px solid transparentize($base-font-color, 0.8);
+  $grid-item-columns: 3;
+  $grid-item-big-columns: 6;
+  $grid-item-color: white;
+  $grid-item-height: 20em;
+
+  @include clearfix;
+  position: relative;
+  margin-right: $block-padding / 3;
+  @include media($very-large-screen) {
+    margin-right: $block-padding;
+  }
+
+  .grid-item {
+    @include transition (all 0.2s ease-in-out);
+    cursor: pointer;
+    float: left;
+    overflow: hidden;
+    outline: none;
+    width: 100%;
+    min-height: 10em;
+    h1, p, li {
+      color: white;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: 3em;
+    }
+
+    @include media($medium-screen) {
+      @include grid-item-columns($grid-item-columns);
+    }
+
+    &:focus,
+    &:hover {
+    }
+  }
+
+  .grid-item-big {
+    @include media($medium-screen) {
+      @include grid-item-columns($grid-item-big-columns);
+    }
+  }
+
+  .nested-grid-item {
+    @include media($medium-screen) {
+      @include grid-item-columns(6);
+      font-size: 0.8em;
+      ul {
+        display: none;
+      }
+    }
+    @include media($large-screen) {
+      font-size: 1.2em;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0;
+    }
+  }
+
+  .nested-grid-item-big {
+    @include media($medium-screen) {
+      @include grid-item-columns(12);
+    }
+  }
+
+  .grid-item, .nested-grid-item, .nested-grid-item-big {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: white;
+    .block {
+      &:hover {
+        > .overlay {
+          visibility: visible;
+        }
+      }
+    }
+    .overlay {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      visibility: hidden;
+      background: transparentize($dark-gray, 0.2);
+    }
+    .no-toggle {
+      visibility: visible;
+      * {
+        color: $medium-gray;
+      }
+      h1 {
+        @include media($large-screen) {
+          font-size: 3em;
+        }
+        font-size: 2em;
+        font-weight: 300;
+      }
+    }
+
+    .rectangle {
+      min-height: $grid-item-height;
+    }
+
+    .block {
+      @include media($very-large-screen) {
+        margin: 0 0 $block-padding $block-padding;
+      }
+      display: block;
+      position: relative;
+      overflow: hidden;
+      margin: 0 0 ($block-padding / 3) ($block-padding / 3);
+    }
+
+    .center-right {
+      bottom: 10px;
+      right: 10px;
+      text-align: right;
+      position: absolute;
+      right: 10px;
+    }
+  }
+}
+
+.category-grid a .block .overlay .center-right {
+    @include media($medium-screen) {
+      font-size: 0.8em;
+      ul {
+        display: none;
+      }
+    }
+    @include media($large-screen) {
+      font-size: 1.2em;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0;
+    }
+}

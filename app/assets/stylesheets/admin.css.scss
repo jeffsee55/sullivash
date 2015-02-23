@@ -13,7 +13,7 @@
 @import "font-awesome";
 @import "admin/colpick";
 
-@import 'admin/components';
+// @import 'admin/components';
 @import 'admin/sidebar';
 @import 'admin/layout';
 @import 'admin/menus';
@@ -24,3 +24,6 @@
 @import 'admin/index';
 @import 'admin/card';
 @import 'admin/user';
+
+@import "shared/mgp";
+@import "shared/components";

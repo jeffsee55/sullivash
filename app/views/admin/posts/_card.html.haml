@@ -1,0 +1,20 @@
+.card
+  -unless p.published?
+    .unpublished.fa-2x.fa.fa-bookmark
+  =link_to admin_post_path(p) do
+    .image{style: "background: url('#{attachment_url(p, :image, :fill, 200, 200) if p.image_id?}') no-repeat center; background-size: cover"}
+    .content
+      .title
+        %strong=p.title
+        %br
+        -if p.published?
+          = "Published #{time_ago_in_words(p.published_at)} ago"
+          %br
+          %em= "#{pluralize(p.impressions_count, "view")}"
+        -else
+          = "Draft: #{time_ago_in_words(p.updated_at)} ago"
+    %ul.action
+      -if p.published?
+        %li
+          =link_to post_path(p) do
+            .fa.fa-location-arrow

@@ -1,0 +1,22 @@
+.contact-hero {
+  height: 300px;
+}
+.contact-outer {
+  @include outer-container();
+  .contact-card {
+    @include clearfix();
+    position: relative;
+    top: -100px;
+    .contact-text, .contact-form {
+      @include media($large-screen) {
+        @include span-columns(6);
+      }
+    }
+    .contact-form {
+      .box {
+        height: 300px;
+        background: #59dea8;
+      }
+    }
+  }
+}

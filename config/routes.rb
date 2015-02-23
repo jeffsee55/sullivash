@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
 
-  resources :posts, only: [:show, :index] do
+  resources :posts, only: [:show, :index], path: :paintings do
     collection do
       match 'search' => 'posts#search', via: [:get, :post], as: :search
     end
@@ -15,14 +15,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/', to: 'dashboard#home'
-    get 'site_posts', to: 'dashboard#site_posts'
     resources :posts do
       collection do
         match 'search' => 'posts#search', via: [:get, :post], as: :search
-        get 'site_posts'
       end
       member do
         patch 'publish' => 'posts#update'
+        patch 'set_featured' => 'posts#set_featured'
       end
     end
     resources :mini_posts, except: :show

@@ -1,1 +1,10 @@
-=@post.title
+= render partial: "partials/nav_left", locals: { logo_color: "white" }
+= render partial: "partials/nav_right", locals: { menu_color: "white" }
+= render partial: "partials/short_banner", locals: { post: @featured_post}
+.contact-outer
+  .contact-card.card
+    %h1 CONTACT
+    .contact-text
+      %p= @mini_post.body
+    .contact-form
+      =render "messages/form"

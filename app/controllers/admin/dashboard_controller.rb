@@ -1,7 +1,8 @@
 class Admin::DashboardController < AdminController
 
   def home
-    @unpublished_posts = Post.where(published_at: nil)
+    @unpublished_posts = Post.unpublished.first(4)
+    @unpublished_posts_remaining = Post.unpublished.count - 4
     @user = User.last
   end
 

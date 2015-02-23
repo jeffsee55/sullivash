@@ -3,7 +3,7 @@
     = cat.input :name, placeholder: "Name", label: false
     = cat.input :description, placeholder: "Description", label: false
     = cat.input :tag_color
-    = cat.submit "Update", class: "button btn-inline", style: "margin-right: 10px;"
+    = cat.submit "Update", class: "btn btn-inline", style: "margin-right: 10px;"
   -if @category.id
-    = button_to "Delete Category", admin_category_path(@category), class: "button btn-inline btn-warning", method: :delete, data: { confirm: "Are you sure" }
+    = button_to "Delete Category", admin_category_path(@category), class: "btn btn-inline btn-warning", method: :delete, data: { confirm: "Are you sure" }
 %hr.thick

@@ -4,7 +4,7 @@ class Admin::MiniPostsController < AdminController
   # GET /admin/mini_posts
   def index
     @home_mini_posts = MiniPost.by_page["Home"]
-    @about_mini_posts = MiniPost.by_page["About"]
+    @contact_mini_post = MiniPost.find_by_page("Contact")
   end
 
   # GET /admin/mini_posts/new

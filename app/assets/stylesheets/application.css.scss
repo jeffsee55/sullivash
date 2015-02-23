@@ -5,7 +5,7 @@
 @import 'neat';
 @import 'base/base';
 @import "font-awesome";
+@import "shared/mgp";
+@import "shared/components";
 
-@import 'application/pages/pages';
-@import 'application/pages/clearance';
-@import 'application/components/components';
+@import "application/frontend";

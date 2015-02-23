@@ -1,0 +1,162 @@
+body {
+  background: white;
+}
+
+p {
+  @include media($large-screen) {
+    line-height: 2;
+  }
+}
+
+hr {
+  margin: 1em 0;
+}
+
+.load {
+  position: fixed;
+  z-index: 1000;
+  top: 0; right: 0; left: 0; bottom: 0;
+  background: #dddddd;
+  .fa {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    color: white;
+  }
+}
+
+.spaced {
+  letter-spacing: 6px;
+}
+
+.heavy {
+  * {
+    font-weight: 800;
+  }
+  font-weight: 800;
+}
+
+.light {
+  * {
+    font-weight: 300;
+  }
+  font-weight: 300;
+}
+
+.ultra-light {
+  * {
+    font-weight: 100;
+  }
+  font-weight: 100;
+}
+
+.btn, .btn-outline, button, button[type=submit], input[type="submit"] {
+  @include appearance(none);
+  -webkit-font-smoothing: antialiased;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: 400;
+  line-height: 1;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.btn {
+  background-color: $action-color;
+  border-radius: $base-border-radius;
+  border: none;
+  color: #fff;
+  &:hover,
+  &:focus {
+    background-color: darken($action-color, 15%);
+    color: #fff;
+  }
+}
+
+.btn-outline {
+  border-radius: $base-border-radius;
+  border: 1px solid;
+  color: $action-color;
+  background: white;
+  &:hover,
+  &:focus {
+    background-color: lighten($action-color, 35%);
+    color: $action-color;
+  }
+}
+
+.btn-primary {
+  background: $blue;
+  &:hover {
+    background: darken($blue, 15);
+  }
+}
+
+.btn-warning {
+  background: $brick;
+  &:hover {
+    background: darken($brick, 15);
+  }
+}
+
+.btn-inline {
+  display: inline-block;
+  float: left;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+#flash {
+  background: $brick;
+  & > div {
+    padding: 10px 0;
+    color: white;
+    @include outer-container;
+  }
+}
+
+#image {
+  width: 100%;
+  background: $light-gray;
+  overflow: hidden;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  i {
+    position: absolute;
+    top: 45%;
+    left: 43%;
+    color: $aqua;
+  }
+}
+
+hr.thick {
+  border-bottom: 5px solid #dddddd;
+}
+
+.avatar {
+  @include transition(all 0.4s ease);
+  vertical-align: middle;
+  border: 5px solid transparent;
+  &:hover {
+    border: 5px solid $brick;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+}

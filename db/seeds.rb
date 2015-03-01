@@ -41,7 +41,7 @@ require 'nokogiri'
 # end
 
 
-doc = Nokogiri::XML(open("/Users/jeffsee55/Downloads/ashleysullivan.wordpress.2015-02-16.xml"))
+doc = Nokogiri::XML(open("sullivash_wordpress.xml"))
 items = doc.css("rss").css("channel").css("item")
 items.each do |i|
   if i.xpath("wp:post_type").text == "post"

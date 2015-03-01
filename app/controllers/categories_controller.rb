@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
       @categories = Category.by_subject.alphabetical
     else
       @categories = Category.alphabetical
+      @title = "All Categories"
     end
   end
 

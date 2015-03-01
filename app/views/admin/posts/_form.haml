@@ -5,19 +5,19 @@
   .toolbar
     = p.input :title, placeholder: "Title", label: false
     %hr
-    #image.post_image= image_tag attachment_url(@post, :image) if @post.image_id?
-    = p.input :remove_image, as: :boolean
+    #image{style: "background: url('#{ attachment_url @post, :image if @post.image_id? }') no-repeat; background-size: cover"}
     = p.attachment_field :image, direct: true
+    = p.input :remove_image, as: :boolean
     %hr
     %h5 Categories
-    -# %ul.categories
-    -#   - @categories.each do |cat|
-    -#     %li
-    -#       -if @post.categories.include?(cat)
-    -#         = check_box_tag 'category_ids[]', cat.id, input_html: { checked: true }
-    -#       -else
-    -#         = check_box_tag 'category_ids[]', cat.id
-    -#       = cat.nice_name
+    %ul.categories
+      - @categories.each do |cat|
+        %li
+          -if @post.categories.include?(cat)
+            = check_box_tag 'category_ids[]', cat.id, input_html: { checked: true }
+          -else
+            = check_box_tag 'category_ids[]', cat.id
+          = cat.nice_name
     %hr
     .submit-actions
       = p.input :available

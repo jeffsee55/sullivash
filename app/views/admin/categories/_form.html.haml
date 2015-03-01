@@ -1,7 +1,7 @@
 .category-form
   = simple_form_for [:admin, @category] do |cat|
     = cat.input :name, placeholder: "Name", label: false
-    = cat.input :description, placeholder: "Description", label: false
+    = cat.input :parent, collection: ["subject", "style"]
     = cat.input :tag_color
     = cat.submit "Update", class: "btn btn-inline", style: "margin-right: 10px;"
   -if @category.id

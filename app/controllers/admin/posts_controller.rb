@@ -40,7 +40,7 @@ class Admin::PostsController < AdminController
     if params[:posts]
       @posts = params[:posts]
     else
-      @posts = Post.page params[:page]
+      @posts = Post.all.page params[:page]
     end
   end
 

@@ -5,7 +5,7 @@
   .modal-window
     .modal-inner
       %label.modal-close{:for => "modal-1"}
-      %h1 CONTACT
+      %h1.modal-inner-header CONTACT
       -if @post
         =render partial: "messages/form", locals: { subject: @post.title }
       -else

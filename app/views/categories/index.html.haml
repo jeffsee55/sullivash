@@ -1,7 +1,7 @@
 = render partial: "partials/nav_left", locals: { logo_color: "white" }
 = render partial: "partials/nav_right", locals: { menu_color: "white" }
 = render partial: "partials/short_banner", locals: { post: @categories.first.posts.first || @featured_post }
-= render partial: "partials/grid_header", locals: { title: @title.upcase || "ALL CATEGORIES" }
+= render partial: "partials/grid_header", locals: { title: @title.upcase || "ALL CATEGORIES" , link: ()}
 .grid-items-lines.category-grid
   -@categories.each do |category|
     =link_to category, class: "grid-item" do

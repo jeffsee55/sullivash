@@ -1,9 +1,24 @@
 = render partial: "partials/nav_left", locals: { logo_color: "white" }
 = render partial: "partials/nav_right", locals: { menu_color: "white" }
 = render partial: "partials/short_banner", locals: { post: @posts[5] }
--@posts_years.sort.reverse.each do |year, posts|
-  = render partial: "partials/grid_header", locals: { title: "#{year.year} | #{posts.count} paintings" }
+-if @posts_years
+  -@posts_years.sort.reverse.each do |year, posts|
+    -if year.year == 2008
+      - period = "2008-2010"
+    -elsif year.year == 2003
+      - period = "2003-2007"
+    -else
+      - period = year.year
+    = render partial: "partials/grid_header", locals: { title: "#{period} | #{posts.count} paintings", link: (link_to "View", posts_path(year: year.to_date)) }
+    .grid-items-lines.category-grid
+      -posts.first(4).each do |post|
+        %a.grid-item{:href => "javascript:void(0)"}
+          =render partial: "partials/grid_item", locals: { post: post }
+-else
+  = render partial: "partials/grid_header", locals: { title: "#{@year}", link: (link_to "Back to all paintings", posts_path) }
   .grid-items-lines.category-grid
-    -posts.first(4).each do |post|
+    -@posts.each do |post|
       %a.grid-item{:href => "javascript:void(0)"}
         =render partial: "partials/grid_item", locals: { post: post }
+  .pagination
+    = paginate @posts

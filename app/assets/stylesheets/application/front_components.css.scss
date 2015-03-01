@@ -21,9 +21,14 @@
 .navbar-left {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 15px;
+  width: 50%;
   .logo {
     width: 100%;
+  }
+  @include media($medium-screen) {
+    width: auto;
+    top: 0;
   }
 }
 

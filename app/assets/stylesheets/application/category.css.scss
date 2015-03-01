@@ -11,5 +11,8 @@
 }
 
 .grid-header {
-  margin: 5em 2em;
+  margin: 3em 1em;
+  @include media($medium-screen) {
+    margin: 5em 3em;
+  }
 }

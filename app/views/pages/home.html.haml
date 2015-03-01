@@ -23,3 +23,5 @@
           %h1= @home_mini_posts[1].body
   %a.grid-item.grid-item-big
     =render partial: "partials/grid_item", locals: { post: @posts[5] }
+.waypoint
+  =link_to "Show More", grid_path(index: 1), class: "show-more btn-outline", remote: true

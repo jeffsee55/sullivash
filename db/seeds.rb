@@ -62,6 +62,7 @@ items.each do |i|
     p = Post.create(
       title: title,
       published_at: published,
+      created_at: published,
       details: img_details,
       body: title
     )

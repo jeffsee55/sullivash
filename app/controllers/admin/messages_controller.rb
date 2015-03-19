@@ -5,7 +5,7 @@ class Admin::MessagesController < AdminController
   end
 
   def index
-    @messages = Message.all
+    @messages = Message.all.page params[:page]
   end
 
   def destroy

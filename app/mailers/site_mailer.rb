@@ -6,7 +6,7 @@ class SiteMailer < ActionMailer::Base
   end
 
   def new_message(message)
-    template_name = "new-message"
+    template_name = "sullivash-new-message"
     template_content = []
     message = {
       to: [
@@ -16,34 +16,10 @@ class SiteMailer < ActionMailer::Base
       merge_vars: [
         {rcpt: "jeffsee.55@gmail.com",
           vars: [
-            {name: "NAME", content: message.name},
-            {name: "EMAIL", content: message.email},
-            {name: "BODY", content: message.body}
-          ]
-        }
-      ]
-    }
-
-    mandrill_client.messages.send_template template_name, template_content, message
-  end
-
-  def post_notification(post)
-    template_name = "post-notification"
-    template_content = []
-    message = {
-      to:
-        Subscriber.all.map do |s|
-          {email: "#{s.email}"}
-        end,
-      subject: "RO:#{post.title}",
-      merge_vars: [
-        {rcpt: "jeffsee.55@gmail.com",
-          vars: [
-            {name: "TITLE", content: post.title},
-            {name: "IMAGE_URL", content: "https://s3-us-west-2.amazonaws.com/real-org-images/store/#{post.image.id}"},
-            {name: "POST_URL", content: ""},
-            {name: "UNSUBSCRIBE_URL", content: "http://localhost:5000"},
-            {name: "EXCERPT", content: post.strip_and_truncate(200) }
+            { name: "NAME", content: message.name },
+            { name: "EMAIL", content: message.email },
+            { name: "BODY", content: "SUBJECT: #{ message.subject }, #{ message.body }" },
+            { name: "MESSAGE_URL", content: admin_message_url(message.id) }
           ]
         }
       ]

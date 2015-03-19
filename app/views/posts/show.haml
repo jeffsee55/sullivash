@@ -7,10 +7,11 @@
       =attachment_image_tag @post, :image
   .project-details.card
     %h1= @post.title
-    %p DETAILS
+    %p= simple_format @post.details
     %ul
       -@post.categories.each do |category|
-        %li= category.name.upcase
+        %li
+          =link_to category.name.upcase, category
     %hr
     -if @post.available?
       %span.available

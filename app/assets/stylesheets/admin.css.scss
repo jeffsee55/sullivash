@@ -19,6 +19,7 @@
 @import 'admin/menus';
 @import 'admin/header';
 @import 'admin/categories';
+@import 'admin/image_upload';
 @import 'admin/messages';
 @import 'admin/post';
 @import 'admin/index';
@@ -27,3 +28,4 @@
 
 @import "shared/mgp";
 @import "shared/components";
+@import "shared/modal";

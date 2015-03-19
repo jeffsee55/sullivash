@@ -8,6 +8,27 @@ p {
   }
 }
 
+#flash {
+
+  & > div {
+    padding: 1em 5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 500;
+  }
+
+  #flash_notice {
+    background: $mint;
+  }
+
+  #flash_alert {
+    background: $brick;
+    color: white;
+  }
+}
+
 hr {
   margin: 1em 0;
 }
@@ -117,15 +138,6 @@ hr {
 
 .clearfix {
   @include clearfix();
-}
-
-#flash {
-  background: $brick;
-  & > div {
-    padding: 10px 0;
-    color: white;
-    @include outer-container;
-  }
 }
 
 #image {

@@ -8,10 +8,10 @@ class Admin::PostsController < AdminController
   end
 
   def set_featured
-    if @post.set_featured
+    if @post.set_featured(@featured_post)
       redirect_to :back, notice: "#{@post.title} is now the featured post."
     else
-      redirect_to :back, notice: "#{@post.title} cannot be set as featured, is it published?"
+      redirect_to :back, alert: "#{@post.title} cannot be set as featured, is it published?"
     end
   end
 
@@ -70,7 +70,7 @@ class Admin::PostsController < AdminController
           )
         end
       end
-      redirect_to admin_post_path(@post), alert: "#{@post.title} was susccessfully updated"
+      redirect_to admin_post_path(@post), notice: "#{@post.title} was susccessfully updated"
     end
   end
 
@@ -78,7 +78,7 @@ class Admin::PostsController < AdminController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_posts_path, notice: "#{@post.title} was successfully deleted" }
+      format.html { redirect_to admin_posts_path, alert: "#{@post.title} was successfully deleted" }
       format.json { head :no_content }
       format.js   { render :layout => false }
     end
@@ -92,7 +92,7 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :image, :remove_image, :available, post_categories_attributes: [:post_id])
+    params.require(:post).permit(:title, :body, :user_id, :image, :details, :published_at, :remove_image, :available, post_categories_attributes: [:post_id])
   end
 
   def publishing?

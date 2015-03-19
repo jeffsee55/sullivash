@@ -43,8 +43,7 @@ class Post < ActiveRecord::Base
     self.save
   end
 
-  def set_featured
-    current_featured_post = Post.where(featured: true).first
+  def set_featured(current_featured_post)
     if self.published?
       current_featured_post.update_attributes(featured: false) if current_featured_post
       self.featured = true
@@ -53,9 +52,6 @@ class Post < ActiveRecord::Base
     else
       return false
     end
-  end
-
-  def pinterest_image
   end
 
   def save_as_draft!
@@ -78,25 +74,6 @@ class Post < ActiveRecord::Base
 
   def email_sent?
     email_sent_at != nil
-  end
-
-  def body_without_images
-    require 'nokogiri'
-    doc = Nokogiri::HTML(self.body)
-    doc.search("img").remove
-    doc.to_html
-  end
-
-  def strip_body_tags
-    doc = Nokogiri::HTML(self.body)
-    body = doc.xpath("//text()").to_s
-    return body
-  end
-
-  def strip_and_truncate(length)
-    doc = Nokogiri::HTML(self.body)
-    body = doc.xpath("//text()").to_s
-    body[0...length]
   end
 
   def send_email

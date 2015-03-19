@@ -5,19 +5,29 @@
   .toolbar
     = p.input :title, placeholder: "Title", label: false
     %hr
-    #image{style: "background: url('#{ attachment_url @post, :image if @post.image_id? }') no-repeat; background-size: cover"}
-    = p.attachment_field :image, direct: true
+    #image.post_image{style: "background: url(#{attachment_url(@post, :image, :fit, 408, 250) if @post.image_id?}) no-repeat center; background-size: cover"}
     = p.input :remove_image, as: :boolean
+    = p.attachment_field :image, direct: true, class: "image_upload"
     %hr
-    %h5 Categories
-    %ul.categories
-      - @categories.each do |cat|
-        %li
-          -if @post.categories.include?(cat)
-            = check_box_tag 'category_ids[]', cat.id, input_html: { checked: true }
-          -else
-            = check_box_tag 'category_ids[]', cat.id
-          = cat.nice_name
+    = p.input :details
+    = p.input :published_at, as: :datetime
+
+    .modal
+      %label{:for => "modal-1"}
+        .btn{style: "margin-left: 0; width: 100%; text-align: center"} Categories
+      %input#modal-1.modal-state{:type => "checkbox"}/
+      .modal-window
+        .modal-inner
+          %label.modal-close{:for => "modal-1"}
+          %h1.modal-inner-header Categories
+          %ul.categories
+            - @categories.each do |cat|
+              %li
+                -if @post.categories.include?(cat)
+                  = check_box_tag 'category_ids[]', cat.id, input_html: { checked: true }
+                -else
+                  = check_box_tag 'category_ids[]', cat.id
+                = cat.nice_name
     %hr
     .submit-actions
       = p.input :available

@@ -39,7 +39,7 @@ namespace :db do
 
   desc "Reassigns posts in the dated categories"
   task fix_categories: :environment do
-    categories_slugs = ["2008-2010", "2012", "2003-2007", "2013", "sold", "available-to-purchase","2014"]
+    categories_slugs = ["2008-2010", "2012", "2003-2007", "2013", "sold", "available-to-purchase","2014", "2011"]
     categories_slugs.each do |slug|
       if category = Category.find_by_slug(slug)
         year = category.slug.split("-")[0]

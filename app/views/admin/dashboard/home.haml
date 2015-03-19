@@ -1,8 +1,9 @@
 =render "admin/nav"
 .clearfix
-  %h3 Featured Post
-  %p Choose any published post to be featured throughout the website.
-  =render partial: "admin/posts/card", locals: { p: @featured_post }
+  -if @featured_post
+    %h3 Featured Post
+    %p Choose any published post to be featured throughout the website.
+    =render partial: "admin/posts/card", locals: { p: @featured_post }
 %hr
 .clearfix
   %h3 Drafts

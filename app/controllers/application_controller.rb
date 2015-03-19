@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_featured_post
-    @featured_post ||= Post.where(featured: true).first
+    @featured_post ||= Post.where(featured: true).first || Post.first
   end
 end

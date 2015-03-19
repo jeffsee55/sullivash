@@ -46,6 +46,17 @@
         margin-bottom: 10px;
       }
     }
+
+    div.datetime {
+      select {
+        display: inline;
+      }
+    }
+    .modal label {
+      margin-left: 0;
+      display: block;
+    }
+
     height: 100%;
     #image {
       height: 200px;

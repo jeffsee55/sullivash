@@ -2,8 +2,8 @@
 .body
   .index
     - @categories.each do |c|
-      .card{style: "background: #{c.tag_color}"}
-        =link_to edit_admin_category_path(c), style: "color: white;" do
+      .card
+        =link_to edit_admin_category_path(c) do
           -if c.image
             .image{style: "background: url('#{attachment_url(c.posts.last, :image, :fill, 200, 200)}') no-repeat center; background-size: cover"}
           -else

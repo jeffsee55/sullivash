@@ -1,5 +1,5 @@
 .grid-items-lines
-  %a.grid-item.grid-item-big{:href => "javascript:void(0)"}
+  .grid-item.grid-item-big{:href => "javascript:void(0)"}
     =render partial: "partials/grid_item", locals: { post: posts[0] }
   .grid-item.grid-item-big.square{:href => "javascript:void(0)"}
     .grid-item.nested-grid-item-big
@@ -9,7 +9,7 @@
       =render partial: "partials/grid_item", locals: { post: posts[1] }
     .grid-item.nested-grid-item
       =render partial: "partials/grid_item", locals: { post: posts[2] }
-  %a.grid-item.grid-item-big.square{:href => "javascript:void(0)"}
+  .grid-item.grid-item-big.square{:href => "javascript:void(0)"}
     .grid-item.nested-grid-item
       =render partial: "partials/grid_item", locals: { post: posts[3] }
     .grid-item.nested-grid-item
@@ -17,7 +17,7 @@
     .grid-item.nested-grid-item-big
       .block.rectangle
         .center-right.no-toggle
-  %a.grid-item.grid-item-big
+  .grid-item.grid-item-big
     =render partial: "partials/grid_item", locals: { post: posts[5] }
 .waypoint
   =link_to "Show More", grid_path(index: @index), remote: true

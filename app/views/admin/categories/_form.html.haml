@@ -2,8 +2,7 @@
   = simple_form_for [:admin, @category] do |cat|
     = cat.input :name, placeholder: "Name", label: false
     = cat.input :parent, collection: ["subject", "style"]
-    = cat.input :tag_color
-    = cat.submit "Update", class: "btn btn-inline", style: "margin-right: 10px;"
+    = cat.submit "Submit", class: "btn btn-inline", style: "margin-right: 10px;"
   -if @category.id
     = button_to "Delete Category", admin_category_path(@category), class: "btn btn-inline btn-warning", method: :delete, data: { confirm: "Are you sure" }
 %hr.thick

@@ -3,7 +3,6 @@ class Post < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   validates :title, presence: true
-  validates :body, presence: true
 
   belongs_to :user
   has_many :post_categories
@@ -89,7 +88,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.next_post(post)
-    published.where("published_at > ?", post.published_at).last
+    published.where("published_at > ?", post.published_at).first
   end
 
   def self.prev_post(post)

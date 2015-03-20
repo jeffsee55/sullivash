@@ -24,9 +24,7 @@
         =render partial: "partials/contact_button", locals: { subject: @post.title }
 .project-hero{style: "background: url('#{attachment_url @post, :image, :fill, 1200, 1200}') no-repeat center fixed; background-size: cover;"}
   .project-text.card
-    %h3 More Text
-    %p Laborum reprehenderit ad pariatur pariatur Lorem minim ad nulla duis consequat. Sunt qui Lorem culpa aute eiusmod eiusmod qui laboris Lorem do tempor. Ullamco ad laborum fugiat amet amet eu elit labore pariatur. Qui amet labore dolore ex enim laborum ut. Labore excepteur ad eiusmod labore pariatur. Duis ullamco veniam nulla nisi nulla ex commodo cupidatat esse magna occaecat sit do. Minim veniam exercitation ex sit ex do ipsum Lorem proident. Lorem magna veniam excepteur enim minim nisi. Adipisicing velit aute consequat fugiat dolore proident esse eu id et aute ea do deserunt. Sit aute ipsum do et incididunt in tempor eiusmod aute quis excepteur minim minim. Ut eu minim ea veniam anim non pariatur magna amet elit.
-    %p Laborum reprehenderit ad pariatur pariatur Lorem minim ad nulla duis consequat. Sunt qui Lorem culpa aute eiusmod eiusmod qui laboris Lorem do tempor. Ullamco ad laborum fugiat amet amet eu elit labore pariatur. Qui amet labore dolore ex enim laborum ut. Labore excepteur ad eiusmod labore pariatur. Duis ullamco veniam nulla nisi nulla ex commodo cupidatat esse magna occaecat sit do. Minim veniam exercitation ex sit ex do ipsum Lorem proident. Lorem magna veniam excepteur enim minim nisi. Adipisicing velit aute consequat fugiat dolore proident esse eu id et aute ea do deserunt. Sit aute ipsum do et incididunt in tempor eiusmod aute quis excepteur minim minim. Ut eu minim ea veniam anim non pariatur magna amet elit.
+    =@post.body.html_safe if @post.body
 .other-projects
   -if @prev
     =link_to @prev, style: "background: url('#{attachment_url @prev, :image, :fill, 200, 200}') no-repeat center; background-size: cover;", class: "prev-project" do

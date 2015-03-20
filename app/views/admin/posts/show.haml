@@ -41,6 +41,6 @@
 %hr
 .post
   .show
-    = @post.body.html_safe
+    = @post.body.html_safe if @post.body
 :javascript
   disqus_shortname = "therealisticorganizer"

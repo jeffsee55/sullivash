@@ -23,8 +23,9 @@
         SOLD
         =render partial: "partials/contact_button", locals: { subject: @post.title }
 .project-hero{style: "background: url('#{attachment_url @post, :image, :fill, 1200, 1200}') no-repeat center fixed; background-size: cover;"}
-  .project-text.card
-    =@post.body.html_safe if @post.body
+  -if @post.body
+    .project-text.card
+      =@post.body.html_safe
 .other-projects
   -if @prev
     =link_to @prev, style: "background: url('#{attachment_url @prev, :image, :fill, 200, 200}') no-repeat center; background-size: cover;", class: "prev-project" do

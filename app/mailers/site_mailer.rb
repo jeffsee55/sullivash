@@ -1,5 +1,5 @@
 class SiteMailer < ActionMailer::Base
-  default from: "stefanie@realisticorganizer.com"
+  default from: "info@sullivash.com"
 
   def mandrill_client
     @mandrill_client ||= Mandrill::API.new(ENV["MANDRILL_API_KEY"])
@@ -10,11 +10,11 @@ class SiteMailer < ActionMailer::Base
     template_content = []
     message = {
       to: [
-        {email: "jeffsee.55@gmail.com"},
+        {email: "sullivash@gmail.com"},
       ],
       subject: "New Message from #{message.name}",
       merge_vars: [
-        {rcpt: "jeffsee.55@gmail.com",
+        {rcpt: "sullivash@gmail.com",
           vars: [
             { name: "NAME", content: message.name },
             { name: "EMAIL", content: message.email },

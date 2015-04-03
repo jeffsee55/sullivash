@@ -5,9 +5,6 @@ class Category < ActiveRecord::Base
   has_many :post_categories
   has_many :posts, through: :post_categories
 
-  has_many :subcategories, class: "Category", foreign_key: "parent_id", dependent: :destroy
-  belongs_to :parent_category, class: "Category"
-
   scope :alphabetical, -> { order("name ASC") }
   scope :by_style, -> { where(parent: "style") }
   scope :by_subject, -> { where(parent: "subject") }

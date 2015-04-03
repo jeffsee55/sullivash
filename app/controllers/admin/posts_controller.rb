@@ -62,11 +62,11 @@ class Admin::PostsController < AdminController
       @post.publish! if publishing?
       @post.save_as_draft! if drafting?
       if params[:category_ids]
-        params[:category_ids].each do |category_id|
         PostCategory.where(post_id: @post.id).delete_all
-        PostCategory.create(
-          post_id: @post.id,
-          category_id: category_id
+        params[:category_ids].map do |category_id|
+          PostCategory.create(
+            post_id: @post.id,
+            category_id: category_id
           )
         end
       end

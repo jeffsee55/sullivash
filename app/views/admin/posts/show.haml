@@ -22,11 +22,6 @@
     -if @post.published?
       %h5= "Published #{time_ago_in_words(@post.published_at)} ago"
       %h5= "#{pluralize(@post.impressions_count, "view")}"
-      -if @post.email_sent?
-        Notification email sent at:
-        = time_tag @post.email_sent_at
-      -else
-        Notification email not yet sent.
     -else
       %h5= "Draft: #{time_ago_in_words(@post.updated_at)} ago"
     %hr

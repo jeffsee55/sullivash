@@ -8,13 +8,13 @@ class CategoriesController < ApplicationController
 
   def index
     if params[:parent] == "style"
-      @categories = Category.by_style.alphabetical
+      @categories = Category.by_style.includes(:posts).alphabetical.reject { |c| c.posts.empty? }
       @title = "By Style"
     elsif  params[:parent] == "subject"
       @title = "By Subject"
-      @categories = Category.by_subject.alphabetical
+      @categories = Category.by_subject.includes(:posts).alphabetical.reject { |c| c.posts.empty? }
     else
-      @categories = Category.alphabetical
+      @categories = Category.alphabetical.includes(:posts).reject { |c| c.posts.empty? }
       @title = "All Categories"
     end
   end

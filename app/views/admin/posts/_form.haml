@@ -7,7 +7,7 @@
     %hr
     #image.post_image{style: "background: url(#{attachment_url(@post, :image, :fit, 408, 250) if @post.image_id?}) no-repeat center; background-size: cover"}
     = p.input :remove_image, as: :boolean
-    = p.attachment_field :image, direct: true, class: "image_upload"
+    = p.attachment_field :image, direct: true, presigned: true,  class: "image_upload"
     %hr
     = p.input :details
     = p.input :published_at, as: :datetime

@@ -19,7 +19,12 @@ class Category < ActiveRecord::Base
 
   def random_post
     count = posts.count
-    self.posts[rand(0..(count - 1))]
+    post = self.posts[rand(0..(count - 1))]
+    if post.image_id.nil?
+      return Post.where.not(image_id: nil).first
+    else
+      return post
+    end
   end
 
   def cleanup_posts

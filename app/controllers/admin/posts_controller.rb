@@ -19,8 +19,12 @@ class Admin::PostsController < AdminController
     @post = Post.new(post_params)
 
     if @post.save
-      @post.publish! if publishing?
-      @post.save_as_draft! if drafting?
+      if publishing?
+        published_at = DateTime.new(post_params["published_at(1i)"].to_i, post_params["published_at(2i)"].to_i, post_params["published_at(3i)"].to_i, post_params["published_at(4i)"].to_i, post_params["published_at(5i)"].to_i)
+        @post.publish!(published_at)
+      else
+        @post.save_as_draft!
+      end
       if params[:category_ids]
         params[:category_ids].each do |category_id|
           PostCategory.create(
@@ -59,8 +63,12 @@ class Admin::PostsController < AdminController
   def update
     @post.update(post_params)
     if @post.save
-      @post.publish! if publishing?
-      @post.save_as_draft! if drafting?
+      if publishing?
+        published_at = DateTime.new(post_params["published_at(1i)"].to_i, post_params["published_at(2i)"].to_i, post_params["published_at(3i)"].to_i, post_params["published_at(4i)"].to_i, post_params["published_at(5i)"].to_i)
+        @post.publish!(published_at)
+      else
+        @post.save_as_draft!
+      end
       if params[:category_ids]
         PostCategory.where(post_id: @post.id).delete_all
         params[:category_ids].map do |category_id|
@@ -92,7 +100,7 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :image, :details, :published_at, :remove_image, :available, post_categories_attributes: [:post_id])
+    params.require(:post).permit(:title, :body, :user_id, :image, :details, "published_at(1i)", "published_at(2i)", "published_at(3i)", "published_at(4i)", "published_at(5i)", :remove_image, :available, post_categories_attributes: [:post_id])
   end
 
   def publishing?

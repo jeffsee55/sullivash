@@ -28,10 +28,6 @@
     =button_to "View", post_path(@post), class: "btn btn-inline", method: :get
     =button_to "Edit", edit_admin_post_path(@post), class: "btn btn-inline", method: :get
     =button_to "Feature", set_featured_admin_post_path(@post), class: "btn btn-primary btn-inline", method: :patch
-    -unless @post.published?
-      =button_to "Publish", publish_admin_post_path("post"=>{"title" => @post.title}, "commit" => "Publish"), class: "btn btn-primary btn-inline", method: :patch
-    -else
-      =button_to "Revert To Draft", publish_admin_post_path("post"=>{"title" => @post.title}, "commit" => "Save as Draft"), class: "btn btn-primary btn-inline", method: :patch
     =button_to "Delete", admin_post_path(@post), class: "btn btn-inline btn-warning", method: :delete, data: {confirm: "Are you sure you want to delete?"}
 %hr
 .post

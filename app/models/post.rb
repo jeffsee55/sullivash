@@ -37,8 +37,9 @@ class Post < ActiveRecord::Base
     title.truncate(100)
   end
 
-  def publish!
-    update(published_at: Time.now)
+  def publish!(published_at)
+    self.published_at = published_at
+    puts published_at
     self.save
   end
 

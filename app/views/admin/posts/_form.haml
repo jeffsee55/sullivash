@@ -4,12 +4,15 @@
     = p.input :user_id, as: :hidden, value: @user.id
   .toolbar
     = p.input :title, placeholder: "Title", label: false
-    %hr
-    #image.post_image{style: "background: url(#{attachment_url(@post, :image, :fit, 408, 250) if @post.image_id?}) no-repeat center; background-size: cover"}
-    = p.input :remove_image, as: :boolean
+    %hr.thick
+    -if @post.image_id?
+      #image.post_image{style: "background: url(#{attachment_url(@post, :image, :fit, 408, 250) }) no-repeat center; background-size: cover"}
+    -else
+      #image.post_image{style: "background: url('http://placehold.it/408x250&text=No%20Image') no-repeat center; background-size: cover"}
+    = p.input :remove_image, as: :boolean if @post.image_id?
     = p.attachment_field :image, direct: true, presigned: true,  class: "image_upload"
     %hr
-    = p.input :details
+    = p.input :details, label: false, placeholder: "Details about the painting"
     = p.input :published_at, as: :datetime
 
     .modal

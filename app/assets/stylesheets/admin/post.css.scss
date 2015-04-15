@@ -33,7 +33,7 @@
     @include span-columns(4);
     @include shift(1);
     @include omega;
-    padding: 0 2em;
+    padding: 1em 2em;
     background: $toolbar-bg;
     .post_title {
       font-size: 2.5em;
